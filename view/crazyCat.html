@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crazy Cat</title>
+	<meta charset="utf-8"/>
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<style type="text/css">
+*{
+	margin: 0;
+	padding: 0;
+	font-size:0;
+}
+.viewRow{
+	height: 40px;
+}
+.viewRow:nth-child(2n){
+	text-indent: 20px;
+}
+.elements{
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	background-color: #ccc;
+	border-radius: 20px;
+}
+.checked{
+	background-color: #f60;
+}
+.cat{
+	background-color: #f69;
+}
+</style>
+
+<body>
+	<div>
+		<div class="viewRow">
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+		</div>
+		<div class="viewRow">
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+		</div>
+		<div class="viewRow">
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+		</div>
+		<div class="viewRow">
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+		</div>
+		<div class="viewRow">
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+		</div>
+		<div class="viewRow">
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+		</div>
+		<div class="viewRow">
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+		</div>
+		<div class="viewRow">
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+		</div>
+		<div class="viewRow">
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+			<span class="elements"></span>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var a = new Array( [0,0,0,0,0,0,0,0,1]
+						,[0,0,0,0,0,0,0,1,0]
+						,[0,0,1,0,0,0,0,0,0]
+						,[0,0,0,0,0,1,0,0,0]
+						,[0,0,0,0,1,0,0,0,0]
+						,[0,0,0,1,0,0,0,0,0]
+						,[0,0,1,0,0,0,0,0,0]
+						,[0,1,0,0,0,0,0,0,0]
+						,[1,0,0,0,0,0,0,0,0])
+
+	function changeView(data){
+
+		$(".elements").each(function(index, element){
+			// init status
+			$(this).removeClass('cat')
+			$(this).removeClass('checked')
+			// 数据处理这么写
+			var indexNow = index
+				,positionX = parseInt(index/9)
+				,positionY = parseInt(index%9)
+				,position = data[positionX][positionY]
+
+			if(position == 1){
+				$(this).addClass("checked")
+			}else if(position == 2){
+				$(this).addClass("cat")
+			}
+		})
+	}
+
+	function randomArray(){
+		var a = new Array()
+		for(var i = 0; i < 9; i++){
+			a[i] = []
+			for(var j = 0; j < 9; j++){
+				var num = parseInt(Math.random()*100)
+				switch (num%3){
+					case 0:
+						a[i].push(0)
+						break
+					case 1:
+						a[i].push(1)
+						break
+					case 2:
+						a[i].push(2)
+						break
+					default:
+						a[i].push(9)
+				}
+			}
+		}
+		return a
+	}
+
+	setInterval(function(){
+		changeView(randomArray())
+	}, 1000)
+	changeView(randomArray())
+
+	// TODO
+	// 请好好写样式
+
+</script>
+</html>
