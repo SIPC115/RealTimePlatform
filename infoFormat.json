@@ -1,0 +1,48 @@
+// 全局 随机 -> 放置障碍 -> 猫
+// A vs B  A为障碍方
+
+{
+    // 比赛编号 唯一值 string
+    "battleNumber" : "1209230920123",
+    // 比赛类型 number 1: AI vs AI 2: AI vs human 3: human vs AI
+    "battleTyoe" : 1,
+    // 随机障碍位置 [number, number] 数组的每个元素为一个坐标 2,3
+    "randomPosition" : "[[2, 3]]",
+    // 随机障碍个数 number
+    "randomLength" : 6,
+    // 战场信息记录 array
+    "battleRecord": [
+        {
+            // 轮数 number 第一次放置为1 并以此累加 步长为一
+            "roundNumber" : 1,
+            // 选择位置 [number, number]
+            "position" : [2, 3],
+            // 选择正确性 number
+            // 200 正确
+            // 401 位置已被占用
+            // 402 代码返回结果是数组, 但数组长度不正确
+            // 403 代码返回结果是数组, 但数组元素不正确
+            // 404 代码返回结果不是一个数组
+            // 405 代码运行错误
+            "errorCode" : 200,
+            // 错误信息 string
+            // errorCode 200时为空 40* 则返回上述对应文字 405 返回代码编译错误及运行错误信息
+            "errorMessage" : "位置已被占用"
+        },{
+            // 轮数 number 第一次放置为1 并以此累加 步长为一
+            "roundNumber" : 2,
+            // 选择位置 [number, number]
+            "position" : [4, 5],
+            // 选择正确性 number
+            // 200 正确
+            // 401 位置已被占用
+            // 402 代码返回结果是数组, 但数组长度不正确
+            // 403 代码返回结果是数组, 但数组元素不正确
+            // 404 代码返回结果不是一个数组
+            // 405 代码运行错误
+            "errorCode" : 200,
+            // 错误信息 string errorCode 200时为空 40* 则返回上述对应文字 405 返回代码编译错误及运行错误信息
+            "errorMessage" : "代码返回结果是数组, 但数组元素不正确"
+        }
+    ]
+}
