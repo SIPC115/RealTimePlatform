@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void DataProcessing(char *argv[],int BattlefieldData[9][9]){
     int i;
@@ -26,11 +27,12 @@ void DataProcessing(char *argv[],int BattlefieldData[9][9]){
 
 int main(int argc,char *argv[])
 {
+    printf("%d\n", strlen(argv[1]));
     int BattlefieldData[9][9];
     int i;
     DataProcessing(argv,BattlefieldData);
     if(BattlefieldData[0][0]==-100){
-        printf("所传参数错误");
+        printf("Size Error!\n");
     }
     else
         for(i=0;i<81;i++){
