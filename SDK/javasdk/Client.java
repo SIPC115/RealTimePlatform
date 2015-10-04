@@ -9,8 +9,8 @@ import java.net.Socket;
 
 public class Client {
 
-	public static final String IP = "localhost";//服务器地址 
-	public static final int PORT = 8000;//服务器端口号  
+	public static final String IP = "localhost";//路镁脦帽脝梅碌脴脰路 
+	public static final int PORT = 8000;//路镁脦帽脝梅露脣驴脷潞脜  
 
 	public static void main(String[] args) {  
 		handler(); 
@@ -18,9 +18,9 @@ public class Client {
 
 	private static void handler(){
 		try {
-			//实例化一个Socket，并指定服务器地址和端口
+			//脢碌脌媒禄炉脪禄赂枚Socket拢卢虏垄脰赂露篓路镁脦帽脝梅碌脴脰路潞脥露脣驴脷
 			Socket client = new Socket(IP, PORT);
-			//开启两个线程，一个负责读，一个负责写
+			//驴陋脝么脕陆赂枚脧脽鲁脤拢卢脪禄赂枚赂潞脭冒露脕拢卢脪禄赂枚赂潞脭冒脨麓
 			new Thread(new ReadHandlerThread(client)).start();
 			new Thread(new WriteHandlerThread(client)).start();
 		} catch (Exception e) {
@@ -30,7 +30,7 @@ public class Client {
 }  
 
 /*
- *处理读操作的线程 
+ *麓娄脌铆露脕虏脵脳梅碌脛脧脽鲁脤 
  */
 class ReadHandlerThread implements Runnable{
 	private Socket client;
@@ -44,10 +44,10 @@ class ReadHandlerThread implements Runnable{
 		DataInputStream dis = null;
 		try {
 			while(true){
-				//读取服务器端数据  
+				//露脕脠隆路镁脦帽脝梅露脣脢媒戮脻  
 				dis = new DataInputStream(client.getInputStream());
 				String receive = dis.readUTF();   
-				System.out.println("服务器端返回过来的是: " + receive);  
+				System.out.println("路镁脦帽脝梅露脣路碌禄脴鹿媒脌麓碌脛脢脟: " + receive);  
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -67,7 +67,7 @@ class ReadHandlerThread implements Runnable{
 }
 
 /*
- * 处理写操作的线程
+ * 麓娄脌铆脨麓虏脵脳梅碌脛脧脽鲁脤
  */
 class WriteHandlerThread implements Runnable{
 	private Socket client;
@@ -82,13 +82,13 @@ class WriteHandlerThread implements Runnable{
 		BufferedReader br = null;
 		try {
 			while(true){
-				//取得输出流
+				//脠隆碌脙脢盲鲁枚脕梅
 				dos = new DataOutputStream(client.getOutputStream());
-				System.out.print("请输入: \t");  
-				//键盘录入
+				System.out.print("脟毛脢盲脠毛: \t");  
+				//录眉脜脤脗录脠毛
 				br = new BufferedReader(new InputStreamReader(System.in));
 				String send = br.readLine();  
-				//发送数据
+				//路垄脣脥脢媒戮脻
 				dos.writeUTF(send);  
 			}
 		} catch (IOException e) {
